@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int vogais(char* ptr, char* vogal, int tam){
+    int i, j, cont=0;
+    for(i=0;i<5;i++){
+        for(j=0;j<tam;j++){
+            if(ptr[j] == vogal[i]){
+                cont++;
+            }
+        }
+    }
+    return cont;
+
+}
+
+int main(){
+    char* ptr, vogal[5] = "aeiou";
+    int total, tam;
+    printf("qual o tamanho da palavra: ");
+    scanf(" %d", &tam);
+    ptr = (char*)malloc((tam * sizeof(char))+1);
+    fflush(stdin);
+    fgets(ptr, tam+1, stdin);
+    if(ptr){
+        total = vogais(ptr, vogal, tam);
+        printf("%d", total);
+        free(ptr);
+    }
+    else{
+        puts("erro ao alocar memoria");
+    }
+    return 0;
+}

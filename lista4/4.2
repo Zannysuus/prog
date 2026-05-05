@@ -1,0 +1,55 @@
+#include <stdio.h>
+
+void preencher_vetores(int* vet1, int* vet2){
+    int i, j;
+    for(i=0;i<5;i++){
+        printf("digite o valor do vetor r | %d |", i+1);
+        scanf("%d", &vet1[i]);
+    }
+    for(j=0;j<10;j++){
+        printf("digite o valor do vetor s | %d |", j+1);
+        scanf("%d", &vet2[j]);
+    }
+}
+
+int valores_iguais(int* vet1, int* vet2, int* vet3){
+    int x = 0, i, j, k, unico = 1;
+    for(i=0;i<5;i++){
+        for(j=0;j<10;j++){
+            if(vet1[i] == vet2[j]){
+                for(k=0;k<x;k++){
+                    if(vet3[k] == vet1[i]){
+                        unico = 0;
+                        break;
+                    }
+                }
+                if(unico){
+                    vet3[x] = vet1[i];
+                    x++;
+                }
+            }
+            unico = 1;
+        }
+    }
+    return x;
+}
+
+void imprimir_vetor(int* vet, int tam){
+    int i = 0;
+    if(tam == 0){
+        printf("nao tem valores iguais");
+    }
+    else{
+        for(i=0;i<tam;i++){
+            printf("%d\n", vet[i]);
+        }
+    }
+}
+
+int main() {
+    int vet_r[5], vet_s[10], vet_x[5], tam;
+    preencher_vetores(vet_r, vet_s);
+    tam = valores_iguais(vet_r, vet_s, vet_x);
+    imprimir_vetor(vet_x, tam);
+    return 0;
+}

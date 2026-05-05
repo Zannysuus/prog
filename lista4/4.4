@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+void preencher_vetor(int* vet, int tam){
+    int i;
+    for(i=0;i<tam;i++){
+        printf("digite o valor do vetor  | %d |", i+1);
+        scanf("%d", &vet[i]);
+    }
+}
+int teste_pa(int n, int* v){
+    int i, k;
+    k = v[1] - v[0];
+    for(i=1;i<n-1;i++){
+        if(v[i+1] - v[i] != k){
+            return 0;
+        }
+    }
+    return k;
+}
+
+int main(){
+    int n, pa;
+    puts("diga o tamanho do vetor");
+    scanf("%d", &n);
+    int vet_v[n];
+    preencher_vetor(vet_v, n);
+    pa = teste_pa(n, vet_v);
+    printf("%d", pa);
+    return 0;
+}

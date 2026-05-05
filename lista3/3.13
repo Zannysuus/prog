@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+int main() {
+
+    int a = 10, b = 20, c = 30, d = 40;
+
+    float e = 1.1, f = 2.2, g = 3.3, h = 4.4;
+
+    char v[10] = "abcdefghi";
+
+    int x = 99;
+
+    int *p = &a;
+
+    for (int i = 0; i < 20; i++) {
+
+        printf("Endereco: %p | Conteudo: %d\n", (void*)p, *p);
+
+        if (p == &a) printf("-> Aponta para a\n");
+        if (p == &b) printf("-> Aponta para b\n");
+        if (p == &c) printf("-> Aponta para c\n");
+        if (p == &d) printf("-> Aponta para d\n");
+        if (p == &x) printf("-> Aponta para x\n");
+
+        if ((void*)p == (void*)&e) printf("-> Aponta para e\n");
+        if ((void*)p == (void*)&f) printf("-> Aponta para f\n");
+        if ((void*)p == (void*)&g) printf("-> Aponta para g\n");
+        if ((void*)p == (void*)&h) printf("-> Aponta para h\n");
+
+        for (int j = 0; j < 10; j++) {
+            if ((void*)p == (void*)&v[j]) {
+                printf("-> Aponta para v[%d]\n", j);
+            }
+        }
+
+        p++;
+    }
+
+    return 0;
+}

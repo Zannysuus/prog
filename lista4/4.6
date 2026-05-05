@@ -1,0 +1,52 @@
+#include <stdio.h>
+
+int valida_mail(char *s){
+    int i = 0, numero = 0, letra = 0;
+    while(s[i] != '@'){
+        if(i>63){
+            return 0;
+        }
+        if(s[0]<97 || s[0]>122){
+            return 0;
+        }
+        if(s[i]<97 || s[i]>122){
+            if(s[i]<48 || s[i]>57){
+                if(s[i] != 46 && s[i] != 47 && s[i] != 95 ){
+                    return 0;
+                }
+            }
+            else{
+                numero++;
+            }
+        }
+        else{
+            letra++;
+        }
+        if(s[i] == 46 && s[i+1] == 46){
+            return 0;
+        }
+        if(s[i+1] == '@' && s[i] == 46){
+            return 0;
+        }
+        i++;
+    }
+    if(letra<2 && numero<2){
+        return 0;
+    }
+    return 1;
+}
+
+int main(){
+    int valido;
+    char email[100];
+    printf("qual o nome do seu novo email?\n");
+    fgets(email,100,stdin);
+    valido = valida_mail(email);
+    if(valido){
+        printf("email valido");
+    }
+    else{
+        printf("email invalido");
+    }
+    return 0;
+}

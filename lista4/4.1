@@ -1,0 +1,22 @@
+#include <stdio.h>
+#define TAM 10
+
+int main() {
+    int x[TAM], y[TAM];
+    int i;
+
+    printf("Digite os %d elementos do vetor X:\n", TAM);
+    for (i = 0; i < TAM; i++) {
+        printf("X[%d]: ", i);
+        scanf("%d", &x[i]);
+    }
+    for (i = 0; i < TAM; i++) {
+        y[i] = x[TAM - 1 - i];
+    }
+    printf("\nVetor Y invertido:\n");
+    for (i = 0; i < TAM; i++) {
+        printf("Y[%d] = %d\n", i, y[i]);
+    }
+
+    return 0;
+}

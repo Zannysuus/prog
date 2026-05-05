@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+
+void imprimir_vetor(int* vet){
+    int i = 0;
+    for(i=0;i<7;i++){
+        printf("valor: %d | endereco: %p\n", vet[i],&vet[i]);
+    }
+    printf("\n");
+
+}
+
+int procurar(int* vet, int valor){
+    int i;
+    for(i=0;i<7;i++){
+        if(vet[i] == valor){
+            return i+1;
+        }
+    }
+    return -1;
+}
+void troca_valor(int*vet){
+    int i, j;
+    int vet_copia[7];
+    copiar_vetor(vet, vet_copia);
+    for(i=0;i<7;i++){
+        j=i-1;
+        while(j>-1){
+            if(i!=0){
+                vet[i] += vet_copia[j];
+                j--;
+            }
+        }
+    }
+}
+
+void copiar_vetor(int* vet, int* vet_copia){
+    int i;
+    for(i=0;i<7;i++){
+        vet_copia[i] = vet[i];
+    }
+}
+
+int main(){
+    int vet[7],valor,i;
+    preencher_vetor(vet);
+    imprimir_vetor(vet);
+    printf("digite o valor que voce deseja achar no vetor: ");
+    scanf(" %d", &valor);
+    valor = procurar(vet, valor);
+    printf("o valor esta na posicao %d\n", valor);
+    troca_valor(vet);
+    for(i=0;i<7;i++){
+        printf("%d ",vet[i]);
+    }
+    return 0;
+}

@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+void calcula_corrida(float dist, float *b1, float *b2){
+    *b1 = dist * 2.5 + 4.95;
+    *b2 = dist * 3.0 + 4.95;
+}
+
+int main(){
+    float dist, b1, b2 ;
+    float *p1 = &b1, *p2 = &b2;
+    printf("quantos km foram percorridos: ");
+    scanf("%f", &dist);
+    calcula_corrida(dist, p1, p2);
+    printf("R$%.2f na bandeira 1\n", b1);
+    printf("R$%.2f na bandeira 2", b2);
+    return 0;
+}

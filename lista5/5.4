@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+void clean(char* s){
+    int i;
+    for(i=0;i<20;i++){
+        if(s[i] == '\n'){
+            s[i] = s[i+1];
+        }
+    }
+}
+
+int ler(char* s){
+    int i=0,cont=0;
+    while(s[i]!='\0'){
+        if(s[i]!=' '){
+            cont++;
+        }
+        i++;
+    }
+    return cont;
+}
+
+int main(){
+    char palavra[20];
+    int n, tam;
+    printf("digite uma palavra: ");
+    fgets(palavra, 20, stdin);
+    clean(palavra);
+    tam = ler(palavra);
+    printf("primeira letra: %c\n", palavra[0]);
+    printf("ultima letra: %c\n",palavra[tam-1]);
+    printf("total de caracteres: %d", tam);
+    return 0;
+}

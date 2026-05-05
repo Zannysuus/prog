@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+void clean(char*s){
+    int i;
+    for(i=0;i<20;i++){
+        if(s[i] == '\n'){
+            s[i] = s[i+1];
+        }
+    }
+}
+
+void CamelCase(char *s){
+    int dif, i=1, j;
+    dif = 'a' - 'A';
+    s[0] -= dif;
+    while(s[i] != '\0'){
+        if(s[i] == ' '){
+            s[i+1] -= dif;
+            j = i+1;
+            while(s[j-2] != '\0'){
+                s[j-1] = s[j];
+                j++;
+            }
+        }
+        i++;
+    }
+}
+
+int main(){
+    char s[20];
+    fgets(s,20,stdin);
+    clean(s);
+    CamelCase(s);
+    printf("%s", s);
+    return 0;
+}

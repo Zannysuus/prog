@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+int divs(int n, int* max, int* min){
+    int i;
+    int primo = 1;
+    for(i=2;i<=n/2;i++){
+        if(n%i==0){
+            primo = 0;
+            if(i>*max){
+                *max = i;
+            }
+            if(i<*min){
+                *min = i;
+            }
+        }
+    }
+    if(primo){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+
+int main(void) {
+    int num, maximo, minimo, primo;
+    int* maxi,* mini;
+    scanf("%d", &num);
+    maximo = 0;
+    minimo = num;
+    maxi = &maximo;
+    mini = &minimo;
+    primo = divs(num,maxi,mini);
+    if(primo){
+        printf("é primo");
+    }
+    else{
+        printf("nao é primo %d %d",maximo, minimo);
+    }
+
+    return 0;
+}
