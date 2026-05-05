@@ -1,2 +1,0 @@
-# prog
-exercicios de prog
